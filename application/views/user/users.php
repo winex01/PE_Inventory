@@ -12,13 +12,13 @@
 
       <div style="margin-bottom: 20px;"></div>
 
-      <table id="table-users" class="table table-bordered table-striped">
+      <table id="table-users" class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
           <th><?= lang('first_name_input') ?></th>
           <th><?= lang('last_name_input') ?></th>
           <th><?= lang('username_input') ?></th>
-          <th><?= lang('created_at') ?></th>
+          <th><?= lang('added_by') ?></th>
           <th><center><?= lang('action') ?></center></th>
         </tr>
         </thead>

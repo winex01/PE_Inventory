@@ -110,12 +110,15 @@ class User extends CI_Controller {
 			$data[$i]['id'] = $user->id;
 			$data[$i]['first_name'] = ucwords($user->first_name);
 			$data[$i]['last_name'] = ucwords($user->last_name);
-			$data[$i]['username'] = ucwords($user->username);
-			$data[$i]['added_by'] = ucwords($user->added_by);
+			$data[$i]['username'] = $user->username;
+			$data[$i]['added_by'] = $user->added_by;
+
+			$disabled = ($user->username == 'admin') ? 'disabled' : '';
 
 			$action = "<center>";
-			$action .= '<button class="btn btn-warning btn-xs" onclick="edit_user('.$user->id.')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>';
-			$action .= ' <button class="btn btn-danger btn-xs" onclick="delete_user('.$user->id.')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>';
+			
+			$action .= ' <button '.$disabled.' class="btn btn-warning btn-xs" onclick="edit_user('.$user->id.')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>';
+			$action .= ' <button '.$disabled.' class="btn btn-danger btn-xs" onclick="delete_user('.$user->id.')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>';
 			$action .= '</center>';
 
 			$data[$i]['action'] = $action;

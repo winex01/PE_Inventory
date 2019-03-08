@@ -31,6 +31,7 @@ $lang['delete_confirmation']	= 'Are you sure you want to delete this data?';
 // common column
 $lang['created_at']			= 'Created At';
 $lang['action']				= 'Action';
+$lang['added_by']			= 'Added By';
 
 
 
