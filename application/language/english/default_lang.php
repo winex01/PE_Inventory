@@ -18,6 +18,16 @@ $lang['last_name_input'] 	= 'Last Name';
 $lang['username_input'] 	= 'Username';
 $lang['password_input']		= 'Password';
 
+// equipments
+$lang['equipments'] 		= 'Equipments';
+$lang['equipments_icon'] 	= 'fa fa-tasks';
+$lang['equipment_name']		= 'Equipment name';
+$lang['quantity'] 			= 'Quantity';
+$lang['brand'] 				= 'Brand';
+$lang['date_arrived'] 		= 'Date arrived';
+$lang['date_added'] 		= 'Date added';
+$lang['condition'] 			= 'Condition';
+
 // flash
 $lang['invalid_input']			= 'Invalid input!';
 $lang['save_flash']				= 'Save succesfully!';
@@ -32,8 +42,4 @@ $lang['delete_confirmation']	= 'Are you sure you want to delete this data?';
 $lang['created_at']			= 'Created At';
 $lang['action']				= 'Action';
 $lang['added_by']			= 'Added By';
-
-
-
-
 

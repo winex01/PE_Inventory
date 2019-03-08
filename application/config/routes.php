@@ -18,6 +18,14 @@ $route['user/create'] = 'user/create';
 $route['user/delete'] = 'user/delete';
 $route['user/get_lists'] = 'user/get_lists';
 
+// equipments
+$route['equipments'] = 'equipment';
+$route['equipment/get_lists'] = 'equipment/get_lists';
+// $route['user/edit'] = 'user/edit';
+// $route['user/update'] = 'user/update';
+// $route['user/create'] = 'user/create';
+// $route['user/delete'] = 'user/delete';
+
 // default
 $route['default_controller'] = 'login';
 $route['404_override'] = '';

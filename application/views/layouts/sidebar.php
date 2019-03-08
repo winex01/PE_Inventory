@@ -37,6 +37,12 @@
         </a>
       </li>
 
+      <li class="treeview <?= active('equipments') ?>">
+        <a href="<?= base_url('equipments') ?>">
+          <i class="<?= lang('equipments_icon') ?>"></i> <span><?= lang('equipments') ?></span>
+        </a>
+      </li>
+
       <!-- <li class="treeview active"> -->
       <!-- <li class="treeview">
         <a href="#">

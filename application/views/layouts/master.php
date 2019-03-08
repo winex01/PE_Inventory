@@ -38,6 +38,10 @@ switch ($page) {
 	case 'user/users':
 		$this->load->view('scripts/users');
 		break;
+
+	case 'user/equipments':
+		$this->load->view('scripts/equipments');
+		break;
 }
 
 $this->load->view('layouts/footer');
