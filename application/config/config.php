@@ -23,9 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://peinventory.test/';
-// $config['base_url'] = 'http://192.168.3.80/inventory/';
-
+$config['base_url'] = 'http://localhost/peinventory';
 /*
 |--------------------------------------------------------------------------
 | Index File
