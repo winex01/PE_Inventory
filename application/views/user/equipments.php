@@ -37,3 +37,4 @@
 <?php $this->load->view('modals/equipment/add') ?>
 <?php $this->load->view('modals/equipment/delete') ?>
 <?php $this->load->view('modals/equipment/edit') ?>
+<?php $this->load->view('modals/equipment/report') ?>

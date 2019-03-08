@@ -25,6 +25,8 @@ $route['equipment/delete'] = 'equipment/delete';
 $route['equipment/create'] = 'equipment/create';
 $route['equipment/edit'] = 'equipment/edit';
 $route['equipment/update'] = 'equipment/update';
+$route['equipment/report'] = 'equipment/report';
+$route['equipment/deduct'] = 'equipment/deduct';
 
 // default
 $route['default_controller'] = 'login';

@@ -201,8 +201,127 @@
     		}
 		});
 		
+	});	
+</script>
+
+<script type="text/javascript">
+	function report_equipment(id) {
+		// console.log(id);
+		$.ajax({
+			url: '<?= base_url('equipment/report') ?>',
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				'<?php csrfName(); ?>' : '<?php csrfHash(); ?>',
+				id : id
+			},
+		})
+		.done(function(response) {
+			if (response) {
+				// console.log(response);
+				$('#report_equipment_id').val(response.equipmentid);
+				$('#report_equipment_name').val(response.equipmentname);
+				$('#report_quantity').val(response.quantity);
+				$('#report_brand').val(response.brand);
+				$('#report_condition_id').val(response.condition_id);
+				$('#modal-report-equipment').modal();
+			}
+		});
+	}
+
+	$('#btn-report-equipment').on('click', function(event) {
+		event.preventDefault();
+		/* Act on the event */
+		var validate = '';
+		var equipmentid = $('#report_equipment_id').val();
+		var report_loss_quantity = $('#report_loss_quantity').val();
+		var report_student_id = $('#report_student_id').val();
+		var report_student_name = $('#report_student_name').val();
+		var report_student_course = $('#report_student_course').val();
+		var report_date_lost = $('#report_date_lost').val();
+		var report_reason = $('#report_reason').val();
+
+		var report_brand = $('#report_brand').val();
+		var report_equipment_name = $('#report_equipment_name').val();
+
+		// report_loss_quantity validation
+		if (report_loss_quantity == null || report_loss_quantity == '') {
+			$('#report_loss_quantity').parent().parent().addClass('has-error');
+		}else {
+	      $('#report_loss_quantity').parent().parent().removeClass('has-error');
+	      validate += '1';
+	    }
+
+	    // report_student_id validation
+		if (report_student_id == null || report_student_id == '') {
+			$('#report_student_id').parent().parent().addClass('has-error');
+		}else {
+	      $('#report_student_id').parent().parent().removeClass('has-error');
+	      validate += '2';
+	    }
+
+	    // report_student_name validation
+		if (report_student_name == null || report_student_name == '') {
+			$('#report_student_name').parent().parent().addClass('has-error');
+		}else {
+	      $('#report_student_name').parent().parent().removeClass('has-error');
+	      validate += '3';
+	    }
+
+	    // report_student_course validation
+		if (report_student_course == null || report_student_course == '') {
+			$('#report_student_course').parent().parent().addClass('has-error');
+		}else {
+	      $('#report_student_course').parent().parent().removeClass('has-error');
+	      validate += '4';
+	    }
+
+	    // report_date_lost validation
+		if (report_date_lost == null || report_date_lost == '') {
+			$('#report_date_lost').parent().parent().addClass('has-error');
+		}else {
+	      $('#report_date_lost').parent().parent().removeClass('has-error');
+	      validate += '5';
+	    }
+
+	    // report_reason validation
+		if (report_reason == null || report_reason == '') {
+			$('#report_reason').parent().parent().addClass('has-error');
+		}else {
+	      $('#report_reason').parent().parent().removeClass('has-error');
+	      validate += '6';
+	    }
+
+
+		if (validate == '123456') {
+			$.ajax({
+				url: 'equipment/deduct',
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					'<?php csrfName(); ?>' 	: '<?php csrfHash(); ?>',
+					equipmentid				: equipmentid,
+					report_loss_quantity	: report_loss_quantity,
+					report_student_id		: report_student_id,
+					report_student_name		: report_student_name,
+					report_student_course	: report_student_course,
+					report_date_lost		: report_date_lost,
+					report_reason			: report_reason,
+					report_brand			: report_brand,
+					report_equipment_name	: report_equipment_name,
+				},
+			})
+			.done(function(response) {
+				// console.log(response);
+				if (response.deducted == true) {
+	    			$.growl.notice({ message: response.flash });
+	    			$('#table-equipments').DataTable().ajax.reload();
+	    			$('#modal-report-equipment').modal('hide');
+	    		}else {
+	    			$.growl.error({ message: response.flash })
+	    		}
+			});
+		}//end validate
+		
 	});
-
-
-	
 </script>

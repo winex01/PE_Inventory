@@ -64,4 +64,20 @@ class Equipment_model extends CI_Model {
 	{
 		return $this->db->count_all_results($this->table);
 	}
+
+	public function find(int $equipmentid)
+	{
+		return $this->edit($equipmentid);
+	}
+
+	public function deduct_quantity(int $equipmentid, $difference)
+	{
+		if (empty($equipmentid) || empty($difference)) {
+			return;
+		}
+
+		$this->db->set('quantity', $difference);
+		$this->db->where('equipmentid', $equipmentid);
+		return $this->db->update($this->table);
+	}
 }

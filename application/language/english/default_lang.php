@@ -27,6 +27,13 @@ $lang['brand'] 				= 'Brand';
 $lang['date_arrived'] 		= 'Date arrived';
 $lang['date_added'] 		= 'Date added';
 $lang['condition'] 			= 'Condition';
+$lang['report_loss'] 		= 'Report quantity';
+$lang['loss_equipment'] 	= 'Loss item submitted succesfully!';
+$lang['student_id'] 		= 'Student ID';
+$lang['student_name'] 		= 'Student name';
+$lang['student_course'] 	= 'Student course';
+$lang['date_lost'] 			= 'Date lost';
+$lang['reason'] 			= 'Reason';
 
 // flash
 $lang['invalid_input']			= 'Invalid input!';
@@ -42,4 +49,5 @@ $lang['delete_confirmation']	= 'Are you sure you want to delete this data?';
 $lang['created_at']			= 'Created At';
 $lang['action']				= 'Action';
 $lang['added_by']			= 'Added By';
+$lang['submitted']			= 'Submitted succesfully!';
 
