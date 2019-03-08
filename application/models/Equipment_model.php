@@ -45,7 +45,7 @@ class Equipment_model extends CI_Model {
 			return;
 		}
 
-		$this->db->where('id', $id);
+		$this->db->where('equipmentid', $id);
 
 		return $this->db->get($this->table)->row();
 	}
@@ -56,7 +56,7 @@ class Equipment_model extends CI_Model {
 			return;
 		}
 
-		$this->db->where('id', $id);
+		$this->db->where('equipmentid', $id);
 		return $this->db->update($this->table, $data);
 	}
 

@@ -15,9 +15,9 @@
 		        	{ data: "quantity" },
 		        	{ data: "brand" },
 		        	{ data: "date_arrived" },
-		        	{ data: "date_added" },
 		        	{ data: "added_by" },
 		        	{ data: "condition" },
+		        	{ data: "date_added" },
 		        	{ data: "action" },
 		       	]  
 	        } );
@@ -141,10 +141,10 @@
 	});
 
 
-	function edit_user(id) {
+	function edit_equipment(id) {
 		// console.log(id);
 		$.ajax({
-			url: '<?= base_url('user/edit') ?>',
+			url: '<?= base_url('equipment/edit') ?>',
 			type: 'POST',
 			dataType: 'json',
 			data: {
@@ -155,41 +155,47 @@
 		.done(function(response) {
 			if (response) {
 				console.log(response);
-				$('#edit_user_id').val(response.id);
-				$('#edit_first_name').val(response.first_name);
-				$('#edit_last_name').val(response.last_name);
-				$('#edit_username').val(response.username);
-				$('#modal-edit-user').modal();
+				$('#edit_equipment_id').val(response.equipmentid);
+				$('#edit_equipment_name').val(response.equipmentname);
+				$('#edit_quantity').val(response.quantity);
+				$('#edit_brand').val(response.brand);
+				$('#edit_date_arrived').val(response.datearrived);
+				$('#edit_condition_id').val(response.condition_id);
+				$('#modal-edit-equipment').modal();
 			}
 		});
 	}
 
 
-	$('#btn-update-user').on('click', function(event) {
+	$('#btn-update-equipment').on('click', function(event) {
 		event.preventDefault();
 		/* Act on the event */
-		var id = $('#edit_user_id').val();
-		var first_name = $('#edit_first_name').val();
-		var last_name = $('#edit_last_name').val();
-		var username = $('#edit_username').val();
+		var equipmentid = $('#edit_equipment_id').val();
+		var equipmentname = $('#edit_equipment_name').val();
+		var quantity = $('#edit_quantity').val();
+		var brand = $('#edit_brand').val();
+		var datearrived = $('#edit_date_arrived').val();
+		var condition_id = $('#edit_condition_id').val();
 
 		$.ajax({
-			url: 'user/update',
+			url: 'equipment/update',
 			type: 'POST',
 			dataType: 'json',
 			data: {
 				'<?php csrfName(); ?>' : '<?php csrfHash(); ?>',
-				id : id,
-				first_name : first_name,
-				last_name : last_name,
-				username : username,
+				equipmentid		: equipmentid,
+				equipmentname 	: equipmentname,
+				quantity 		: quantity,
+				brand 			: brand,
+				datearrived 	: datearrived,
+				condition_id 	: condition_id,
 			},
 		})
 		.done(function(response) {
 			if (response.updated == true) {
     			$.growl.notice({ message: response.flash });
-    			$('#table-users').DataTable().ajax.reload();
-    			$('#modal-edit-user').modal('hide');
+    			$('#table-equipments').DataTable().ajax.reload();
+    			$('#modal-edit-equipment').modal('hide');
     		}else {
     			$.growl.error({ message: response.flash })
     		}

@@ -19,9 +19,9 @@
           <th><?= lang('quantity') ?></th>
           <th><?= lang('brand') ?></th>
           <th><?= lang('date_arrived') ?></th>
-          <th><?= lang('date_added') ?></th>
           <th><?= lang('added_by') ?></th>
           <th><?= lang('condition') ?></th>
+          <th><?= lang('date_added') ?></th>
           <th><center><?= lang('action') ?></center></th>
         </tr>
         </thead>
@@ -36,4 +36,4 @@
 
 <?php $this->load->view('modals/equipment/add') ?>
 <?php $this->load->view('modals/equipment/delete') ?>
-<?php //$this->load->view('modals/user/edit') ?>
+<?php $this->load->view('modals/equipment/edit') ?>

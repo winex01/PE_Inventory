@@ -122,7 +122,6 @@ class Equipment extends CI_Controller {
 		echo json_encode($return);
 	}
 
-	/*
 	public function edit()
 	{
 		if (empty($this->input->post('id'))) {
@@ -130,7 +129,7 @@ class Equipment extends CI_Controller {
 		}
 
 		echo json_encode(
-			$this->user_model->edit(
+			$this->equipment_model->edit(
 				$this->input->post('id')
 			)
 		);
@@ -138,10 +137,12 @@ class Equipment extends CI_Controller {
 
 	public function update()
 	{
-		$this->form_validation->set_rules('id', lang('invalid_input'), 'required|trim');
-		$this->form_validation->set_rules('first_name', lang('first_name_input'), 'required|trim');
-		$this->form_validation->set_rules('last_name', lang('last_name_input'), 'required|trim');
-		$this->form_validation->set_rules('username', lang('username_input'), 'required|trim|min_length[6]');
+		$this->form_validation->set_rules('equipmentid', lang('invalid_input'), 'required|trim');
+		$this->form_validation->set_rules('equipmentname', lang('equipment_name'), 'required|trim');
+		$this->form_validation->set_rules('quantity', lang('quantity'), 'required|trim|numeric|is_natural_no_zero');
+		$this->form_validation->set_rules('brand', lang('brand'), 'required|trim');
+		$this->form_validation->set_rules('datearrived', lang('date_arrived'), 'required|trim');
+		$this->form_validation->set_rules('condition_id', lang('condition_id'), 'required|trim');
 
 		$return = [
 			'update' => false,
@@ -158,12 +159,14 @@ class Equipment extends CI_Controller {
         else{
         	// success
 			$data = [
-				'first_name' => $this->input->post('first_name'),
-				'last_name' => $this->input->post('last_name'),
-				'username' => $this->input->post('username')
+				'equipmentname' => $this->input->post('equipmentname'),
+				'quantity' => $this->input->post('quantity'),
+				'brand' => $this->input->post('brand'),
+				'datearrived' => $this->input->post('datearrived'),
+				'condition_id' => $this->input->post('condition_id'),
 			];
 
-			$query = $this->user_model->update($this->input->post('id'), $data);
+			$query = $this->equipment_model->update($this->input->post('equipmentid'), $data);
 
 			if ($query) {
 				$return = [
@@ -176,5 +179,4 @@ class Equipment extends CI_Controller {
 
 		echo json_encode($return);
 	}
-	*/
 }
