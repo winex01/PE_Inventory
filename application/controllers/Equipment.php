@@ -11,7 +11,6 @@ class Equipment extends CI_Controller {
 		redirect_if_not_auth();
 
 		$this->load->model('equipment_model');
-		$this->load->model('user_model');
 	}
 
 	public function index()
@@ -42,8 +41,8 @@ class Equipment extends CI_Controller {
 
 
 			$action = "<center>";
-			$action .= ' <button class="btn btn-warning btn-xs" onclick="edit_user('.$equipment->equipmentid.')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>';
-			$action .= ' <button class="btn btn-danger btn-xs" onclick="delete_user('.$equipment->equipmentid.')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>';
+			$action .= ' <button class="btn btn-warning btn-xs" onclick="edit_equipment('.$equipment->equipmentid.')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>';
+			$action .= ' <button class="btn btn-danger btn-xs" onclick="delete_equipment('.$equipment->equipmentid.')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Delete</button>';
 			$action .= '</center>';
 
 			$data[$i]['action'] = $action;
@@ -52,6 +51,31 @@ class Equipment extends CI_Controller {
 
 		
 		echo json_encode($data);
+	}
+
+	public function delete()
+	{
+		if (empty($this->input->post('id'))) {
+			exit;
+		}
+		
+		 $delete = $this->equipment_model->delete(
+		 	$this->input->post('id')
+		 );
+
+		 $return = [
+		 	'deleted' => false,
+		 	'flash' => null
+		 ];
+
+		 if ($delete) {
+		 	$return = [
+		 		'deleted' => true,
+		 		'flash' => lang('delete_flash')
+		 	];
+		 }
+
+		 echo json_encode($return);
 	}
 
 	/*
@@ -91,31 +115,6 @@ class Equipment extends CI_Controller {
         }//end if else
 
 		echo json_encode($return);
-	}
-
-	public function delete()
-	{
-		if (empty($this->input->post('id'))) {
-			exit;
-		}
-		
-		 $delete = $this->user_model->delete(
-		 	$this->input->post('id')
-		 );
-
-		 $return = [
-		 	'deleted' => false,
-		 	'flash' => null
-		 ];
-
-		 if ($delete) {
-		 	$return = [
-		 		'deleted' => true,
-		 		'flash' => lang('delete_flash')
-		 	];
-		 }
-
-		 echo json_encode($return);
 	}
 
 	public function edit()

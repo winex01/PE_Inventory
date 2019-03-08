@@ -1,27 +1,27 @@
 <script>
 	$(document).ready(function() {
-		var table = $('#table-equipments').DataTable( {
-				    	ajax:  {
-				        	url: '<?= base_url('equipment/get_lists') ?>',
-				        	dataSrc: '',
-				          	type: 'POST',
-				          	dataType: 'json',
-				          	data: {
-				          		'<?php csrfName(); ?>' : '<?php csrfHash(); ?>'
-				        	}
-				       	}, 
-				       	columns: [
-				       		{ data: "equipment_name" },
-				        	{ data: "quantity" },
-				        	{ data: "brand" },
-				        	{ data: "date_arrived" },
-				        	{ data: "date_added" },
-				        	{ data: "added_by" },
-				        	{ data: "condition" },
-				        	{ data: "action" },
-				       	]  
-			        } );
-				} );
+		$('#table-equipments').DataTable( {
+		    	ajax:  {
+		        	url: '<?= base_url('equipment/get_lists') ?>',
+		        	dataSrc: '',
+		          	type: 'POST',
+		          	dataType: 'json',
+		          	data: {
+		          		'<?php csrfName(); ?>' : '<?php csrfHash(); ?>'
+		        	}
+		       	}, 
+		       	columns: [
+		       		{ data: "equipment_name" },
+		        	{ data: "quantity" },
+		        	{ data: "brand" },
+		        	{ data: "date_arrived" },
+		        	{ data: "date_added" },
+		        	{ data: "added_by" },
+		        	{ data: "condition" },
+		        	{ data: "action" },
+		       	]  
+	        } );
+		} );
 </script>
 
 
@@ -98,18 +98,18 @@
 		
 	});
 
-	function delete_user(id) {
+	function delete_equipment(id) {
 		// console.log(id);
-		$('#confirm-delete-user').val(id);
-		$('#modal-delete-user').modal();
+		$('#confirm-delete-equipment').val(id);
+		$('#modal-delete-equipment').modal();
 	}
-	$('#confirm-delete-user').on('click', function(event) {
+	$('#confirm-delete-equipment').on('click', function(event) {
 		event.preventDefault();
 		/* Act on the event */
 		var id = $(this).val();
 
 		$.ajax({
-			url: '<?= base_url('user/delete') ?>',
+			url: '<?= base_url('equipment/delete') ?>',
 			type: 'POST',
 			dataType: 'json',
 			data: {
@@ -118,11 +118,11 @@
 			},
 		})
 		.done(function(response) {
-			// console.log(response);
+			console.log(response);
 			if (response.deleted) {
 				$.growl.notice({ message: response.flash });
-				$('#table-users').DataTable().ajax.reload();
-				$('#modal-delete-user').modal('hide');
+				$('#table-equipments').DataTable().ajax.reload();
+				$('#modal-delete-equipment').modal('hide');
 			}
 		});
 		

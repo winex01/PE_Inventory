@@ -35,5 +35,5 @@
 <!-- /.box -->
 
 <?php //$this->load->view('modals/user/add') ?>
-<?php //$this->load->view('modals/user/delete') ?>
+<?php $this->load->view('modals/equipment/delete') ?>
 <?php //$this->load->view('modals/user/edit') ?>
