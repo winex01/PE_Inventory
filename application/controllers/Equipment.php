@@ -11,13 +11,15 @@ class Equipment extends CI_Controller {
 		redirect_if_not_auth();
 
 		$this->load->model('equipment_model');
+		$this->load->model('condition_model');
 	}
 
 	public function index()
 	{
 		$data = [
 			'page' => 'user/equipments',
-			'title' => lang('equipments')
+			'title' => lang('equipments'),
+			'conditions' => $this->condition_model->all()
 		];
 
 		$this->load->view('layouts/master', $data);
@@ -78,13 +80,13 @@ class Equipment extends CI_Controller {
 		 echo json_encode($return);
 	}
 
-	/*
 	public function create()
 	{
-		$this->form_validation->set_rules('first_name', lang('first_name_input'), 'required|trim');
-		$this->form_validation->set_rules('last_name', lang('last_name_input'), 'required|trim');
-		$this->form_validation->set_rules('username', lang('username_input'), 'required|trim|min_length[6]');
-		$this->form_validation->set_rules('password', lang('password_input'), 'required|trim|min_length[6]');
+		$this->form_validation->set_rules('equipment_name', lang('equipment_name'), 'required|trim');
+		$this->form_validation->set_rules('quantity', lang('quantity'), 'required|trim|numeric|is_natural_no_zero');
+		$this->form_validation->set_rules('brand', lang('brand'), 'required|trim');
+		$this->form_validation->set_rules('date_arrived', lang('date_arrived'), 'required|trim');
+		$this->form_validation->set_rules('condition_id', lang('condition_id'), 'required|trim');
 
 		$return = [];
 		if ($this->form_validation->run() == FALSE){
@@ -98,13 +100,16 @@ class Equipment extends CI_Controller {
         else{
         	// success
 			$data = [
-				'first_name' => $this->input->post('first_name'),
-				'last_name' => $this->input->post('last_name'),
-				'username' => $this->input->post('username'),
-				'password' => md5($this->input->post('password'))
+				'equipmentname' => $this->input->post('equipment_name'),
+				'quantity' => $this->input->post('quantity'),
+				'brand' => $this->input->post('brand'),
+				'datearrived' => $this->input->post('date_arrived'),
+				'dateadded' => date_now(),
+				'added_by' => $this->session->username,
+				'condition_id' => $this->input->post('condition_id'),
 			];
 
-			$query = $this->user_model->create($data);
+			$query = $this->equipment_model->create($data);
 
 
 			$return = [
@@ -117,6 +122,7 @@ class Equipment extends CI_Controller {
 		echo json_encode($return);
 	}
 
+	/*
 	public function edit()
 	{
 		if (empty($this->input->post('id'))) {

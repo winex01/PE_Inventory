@@ -156,3 +156,13 @@ if ( ! function_exists('welcome'))
     
     }   
 }
+
+
+// date now
+if ( ! function_exists('date_now'))
+{
+    function date_now()
+    {
+        return date("Y-m-d");     
+    }   
+}

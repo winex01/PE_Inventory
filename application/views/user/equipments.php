@@ -5,7 +5,7 @@
     <!-- /.box-header -->
     <div class="box-body">
 
-      <a class="btn btn-success" data-toggle="modal" href='#modal-user'>
+      <a class="btn btn-success" data-toggle="modal" href='#modal-equipment'>
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
         New
       </a>
@@ -34,6 +34,6 @@
 </div>
 <!-- /.box -->
 
-<?php //$this->load->view('modals/user/add') ?>
+<?php $this->load->view('modals/equipment/add') ?>
 <?php $this->load->view('modals/equipment/delete') ?>
 <?php //$this->load->view('modals/user/edit') ?>

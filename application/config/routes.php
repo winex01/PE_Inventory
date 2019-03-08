@@ -22,9 +22,9 @@ $route['user/get_lists'] = 'user/get_lists';
 $route['equipments'] = 'equipment';
 $route['equipment/get_lists'] = 'equipment/get_lists';
 $route['equipment/delete'] = 'equipment/delete';
+$route['equipment/create'] = 'equipment/create';
 // $route['user/edit'] = 'user/edit';
 // $route['user/update'] = 'user/update';
-// $route['user/create'] = 'user/create';
 
 // default
 $route['default_controller'] = 'login';

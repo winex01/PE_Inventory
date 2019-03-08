@@ -27,67 +27,79 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#btn-save-user').on('click', function(event) {
+		$('#btn-save-equipment').on('click', function(event) {
 			event.preventDefault();
 			/* Act on the event */
 
 			var validate = '';
-			var first_name = $('#first_name').val();
-			var last_name = $('#last_name').val();
-			var username = $('#username').val();
-			var password = $('#password').val();
+			var equipment_name = $('#equipment_name').val();
+			var quantity = $('#quantity').val();
+			var brand = $('#brand').val();
+			var date_arrived = $('#date_arrived').val();
+			var condition_id = $('#condition_id').val();
 
-			// first_name validation
-			if (first_name == null || first_name == '') {
-				$('#first_name').parent().parent().addClass('has-error');
+			// equipment_name validation
+			if (equipment_name == null || equipment_name == '') {
+				$('#equipment_name').parent().parent().addClass('has-error');
 			}else {
-		      $('#first_name').parent().parent().removeClass('has-error');
+		      $('#equipment_name').parent().parent().removeClass('has-error');
 		      validate += '1';
 		    }
 
-		    // last_name validation
-			if (last_name == null || last_name == '') {
-				$('#last_name').parent().parent().addClass('has-error');
+		    // quantity validation
+			if (quantity == null || quantity == '') {
+				$('#quantity').parent().parent().addClass('has-error');
 			}else {
-		      $('#last_name').parent().parent().removeClass('has-error');
+		      $('#quantity').parent().parent().removeClass('has-error');
 		      validate += '2';
 		    }
 
-			// username validation
-			if (username == null || username == '') {
-				$('#username').parent().parent().addClass('has-error');
+		    // brand validation
+			if (brand == null || brand == '') {
+				$('#brand').parent().parent().addClass('has-error');
 			}else {
-		      $('#username').parent().parent().removeClass('has-error');
+		      $('#brand').parent().parent().removeClass('has-error');
 		      validate += '3';
 		    }
 
-		    // password validation
-			if (password == null || password == '') {
-				$('#password').parent().parent().addClass('has-error');
+		    // date_arrived validation
+			if (date_arrived == null || date_arrived == '') {
+				$('#date_arrived').parent().parent().addClass('has-error');
 			}else {
-		      $('#password').parent().parent().removeClass('has-error');
+		      $('#date_arrived').parent().parent().removeClass('has-error');
 		      validate += '4';
 		    }
+
+		    // condition_id validation
+			if (condition_id == null || condition_id == '') {
+				$('#condition_id').parent().parent().addClass('has-error');
+			}else {
+		      $('#condition_id').parent().parent().removeClass('has-error');
+		      validate += '5';
+		    }
+
+
 		    
-		    if (validate == '1234') {
+		    if (validate == '12345') {
 		    	$.ajax({
-		    		url: '<?= base_url('user/create') ?>',
+		    		url: '<?= base_url('equipment/create') ?>',
 		    		type: 'POST',
 		    		dataType: 'json',
 		    		data: {
 		    			'<?php csrfName(); ?>' : '<?php csrfHash(); ?>',
-		    			first_name 	: first_name, 
-		    			last_name 	: last_name, 
-		    			username 	: username, 
-		    			password 	: password, 
+		    			equipment_name 	: equipment_name, 
+		    			quantity 		: quantity, 
+		    			brand 			: brand, 
+		    			date_arrived 	: date_arrived, 
+		    			condition_id 	: condition_id, 
 		    		},
 		    	})
 		    	.done(function(response) {
 		    		console.log(response);
 		    		if (response.inserted == true) {
 		    			$.growl.notice({ message: response.flash });
-		    			$('#table-users').DataTable().ajax.reload();
-		    			$('#modal-user').modal('hide');
+		    			$('#table-equipments').DataTable().ajax.reload();
+		    			$('#modal-equipment').modal('hide');
 		    		}else {
 		    			$.growl.error({ message: response.flash })
 		    		}
