@@ -35,6 +35,10 @@ $lang['student_course'] 	= 'Student course';
 $lang['date_lost'] 			= 'Date lost';
 $lang['reason'] 			= 'Reason';
 
+// reports
+$lang['reports'] 			= 'Reports';
+$lang['reports_icon'] 		= 'fa fa-file';
+
 // flash
 $lang['invalid_input']			= 'Invalid input!';
 $lang['save_flash']				= 'Save succesfully!';

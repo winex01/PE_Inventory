@@ -28,6 +28,10 @@ $route['equipment/update'] = 'equipment/update';
 $route['equipment/report'] = 'equipment/report';
 $route['equipment/deduct'] = 'equipment/deduct';
 
+// reports
+$route['reports'] = 'report';
+$route['report/get_lists'] = 'report/get_lists';
+
 // default
 $route['default_controller'] = 'login';
 $route['404_override'] = '';

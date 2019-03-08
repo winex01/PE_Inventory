@@ -11,6 +11,7 @@ class Dashboard extends CI_Controller {
 		redirect_if_not_auth();
 
 		$this->load->model('user_model');
+		$this->load->model('equipment_model');
 	}
 
 	public function index()
@@ -35,20 +36,20 @@ class Dashboard extends CI_Controller {
 				'fa_icon' => lang('users_icon'),
 				'link' => base_url('users'),
 			),
-			// array(
-			// 	'count' => $this->supplier_model->count(),
-			// 	'title' => lang('suppliers'),
-			// 	'color' => 'bg-yellow',
-			// 	'fa_icon' => lang('suppliers_icon'),
-			// 	'link' => base_url('suppliers'),
-			// ),
-			// array(
-			// 	'count' => $this->item_model->count(),
-			// 	'title' => lang('items'),
-			// 	'color' => 'bg-red',
-			// 	'fa_icon' => lang('items_icon'),
-			// 	'link' => base_url('items'),
-			// )
+			array(
+				'count' => $this->equipment_model->count(),
+				'title' => lang('equipments'),
+				'color' => 'bg-yellow',
+				'fa_icon' => lang('equipments_icon'),
+				'link' => base_url('equipments'),
+			),
+			array(
+				'count' => '-',
+				'title' => lang('reports'),
+				'color' => 'bg-red',
+				'fa_icon' => 'fa-file',
+				'link' => base_url('reports'),
+			)
 		];
 	}
 	

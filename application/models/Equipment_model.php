@@ -80,4 +80,5 @@ class Equipment_model extends CI_Model {
 		$this->db->where('equipmentid', $equipmentid);
 		return $this->db->update($this->table);
 	}
+
 }

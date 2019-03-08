@@ -19,4 +19,13 @@ class Report_model extends CI_Model {
 
 		return $this->db->insert($this->table, $data);
 	}
+
+	public function all(string $date)
+	{
+		if (empty($date)) {
+			return;
+		}
+
+		return $this->db->where('datelost', $date)->get($this->table)->result();
+	}
 }

@@ -57,11 +57,17 @@
           <li><a href="#"><i class="fa fa-circle-o"></i> Pace Page</a></li>
         </ul>
       </li> -->
-      
-      <li class="header">LABELS</li>
+      <li class="header">Extra</li>
+      <li class="treeview <?= active('reports') ?>">
+        <a href="<?= base_url('reports') ?>">
+          <i class="<?= lang('reports_icon') ?>"></i> <span><?= lang('reports') ?></span>
+        </a>
+      </li>
+
+      <!-- 
       <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Example 1</span></a></li>
       <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Example 2</span></a></li>
-      <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Example 3</span></a></li>
+      <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Example 3</span></a></li> -->
     </ul>
   </section>
   <!-- /.sidebar -->
